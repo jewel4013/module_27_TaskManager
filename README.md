@@ -23,7 +23,7 @@
    ```
 6. **Start the local server:**
    ```bash
-   php artisan serve
+   composer run dev
    ```
 
 ## 💻 Others packed with Laravel
