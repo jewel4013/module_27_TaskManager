@@ -2,7 +2,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone <>
+   git clone https://github.com/jewel4013/module_27_TaskManager.git
    ```
 2. **Install Composer dependencies:**
    ```bash
