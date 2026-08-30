@@ -2,7 +2,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone <>
+   git clone https://github.com/jewel4013/module_27_TaskManager.git
    ```
 2. **Install Composer dependencies:**
    ```bash
@@ -23,7 +23,7 @@
    ```
 6. **Start the local server:**
    ```bash
-   php artisan serve
+   composer run dev
    ```
 
 ## 💻 Others packed with Laravel
