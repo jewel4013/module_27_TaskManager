@@ -28,6 +28,7 @@ class ProfileUpdateRequest extends ApiFormRequest
                 'required', 
                 'string', 
                 'email',
+                'max:255',
                 Rule::unique('users', 'email')->ignore($this->user()->id),
             ],
             'password' => 'required|string|min:6|confirmed',

@@ -8,19 +8,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-#[Fillable(['created_by', 'assigned_to', 'name', 'description', 'status'])]
+#[Fillable(['created_by', 'name', 'description', 'status'])]
 class Task extends Model
 {
     use SoftDeletes;
+
+    public const STATUSES = [
+        'created',
+        'assigned',
+        'progress',
+        'hold',
+        'completed',
+        'cancelled',
+    ];
+
+    protected $dates =[
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
 
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function assignedTo(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'assigned_to');
-    }
+    
 
 }
