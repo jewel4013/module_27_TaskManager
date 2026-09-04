@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Auth\PasswordController;
+use App\Http\Controllers\Api\V1\GroupController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\TaskController;
 use Illuminate\Http\Request;
@@ -23,6 +24,10 @@ Route::group(['prefix' => 'v1'], function () {
             Route::post('user/logout', [UserController::class, 'logout']); // Accept: application/json
 
         });
+    });
+
+    Route::group(['middleware' => 'auth:sanctum'], function (){
+        Route::apiResource('groups', GroupController::class);
     });
 
     Route::group(['middleware' => 'auth:sanctum'], function (){
