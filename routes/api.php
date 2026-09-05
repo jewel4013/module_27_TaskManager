@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Auth\PasswordController;
 use App\Http\Controllers\Api\V1\GroupController;
+use App\Http\Controllers\Api\V1\GroupUserController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\TaskController;
 use Illuminate\Http\Request;
@@ -28,6 +29,13 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::group(['middleware' => 'auth:sanctum'], function (){
         Route::apiResource('groups', GroupController::class);
+    });
+
+    Route::group(['middleware' => 'auth:sanctum'], function (){
+        Route::get('groups/{group}/users', [GroupUserController::class, 'index']);
+        Route::post('groups/{group}/users', [GroupUserController::class, 'store']);
+        Route::delete('groups/{group}/users/{user}', [GroupUserController::class, 'destroy']);
+
     });
 
     Route::group(['middleware' => 'auth:sanctum'], function (){
