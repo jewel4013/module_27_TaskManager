@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Auth\PasswordController;
 use App\Http\Controllers\Api\V1\GroupController;
 use App\Http\Controllers\Api\V1\GroupUserController;
+use App\Http\Controllers\Api\V1\TaskAssignController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\TaskController;
 use Illuminate\Http\Request;
@@ -39,7 +40,14 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     Route::group(['middleware' => 'auth:sanctum'], function (){
-        Route::apiResource('tasks', TaskController::class);
+        Route::apiResource('tasks', TaskController::class);        
+    });
+
+    Route::group(['middleware' => 'auth:sanctum'], function (){
+        Route::get('tasks/{task}/assignment', [TaskAssignController::class, 'index']);
+        Route::post('tasks/{task}/assignment', [TaskAssignController::class, 'store']);
+        Route::delete('tasks/{task}/assignment', [TaskAssignController::class, 'destroy']);
+        Route::get('tasks/{task}/assignment/{user}', [TaskAssignController::class, 'show']);
 
     });
 });
