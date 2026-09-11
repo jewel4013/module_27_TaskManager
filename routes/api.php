@@ -47,7 +47,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('tasks/{task}/assignment', [TaskAssignController::class, 'index']);
         Route::post('tasks/{task}/assignment', [TaskAssignController::class, 'store']);
         Route::delete('tasks/{task}/assignment', [TaskAssignController::class, 'destroy']);
-        Route::get('tasks/{task}/assignment/{user}', [TaskAssignController::class, 'show']);
+        Route::get('tasks/{task}/assignment/current', [TaskAssignController::class, 'show']);
 
     });
 });

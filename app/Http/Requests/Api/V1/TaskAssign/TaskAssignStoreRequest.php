@@ -24,7 +24,8 @@ class TaskAssignStoreRequest extends ApiFormRequest
     public function rules(): array
     {
         return [
-            
+            'assignable_type' => 'required',
+            'assignable_id' => 'required',
         ];
     }
 }
