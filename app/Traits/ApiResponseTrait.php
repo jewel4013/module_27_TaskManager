@@ -4,20 +4,20 @@ use Illuminate\Http\JsonResponse;
 
 trait ApiResponseTrait
 {
-    protected function success(mixed $data = null, string $massage = '', int $status = 200): JsonResponse
+    protected function success(mixed $data = null, string $message = '', int $code = 200): JsonResponse
     {
         return response()->json([
             'status' => true,
             'data' => $data,
-            'message' => $massage,
-        ], $status);
+            'messages' => $message,
+        ], $code);
     }
 
-    protected function error(array $massage = ['Internal Server Error'], int $status = 500): JsonResponse
+    protected function error(array $message = ['Internal Server Error'], int $code = 500): JsonResponse
     {
         return response()->json([
             'status' => false,
-            'message' => $massage,
-        ], $status);
+            'messages' => $message,
+        ], $code);
     }    
 }
